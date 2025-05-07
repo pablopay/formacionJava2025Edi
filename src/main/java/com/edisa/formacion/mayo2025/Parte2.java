@@ -9,23 +9,30 @@ import com.google.zxing.common.BitMatrix;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-public class Main {
+public class Parte2 {
     public static void main(String[] args) throws WriterException, IOException {
         if (args.length == 0) {
-            System.out.println("Por favor, proporciona un texto para el código QR.");
+            System.out.println("Por favor, proporciona un texto para el codigo QR.");
             return;
         }
 
         String data = args[0];
-
         String path = args[1];
+        String format = args[2];
 
+        BarcodeFormat barcodeFormat;
 
-        BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 500, 500);
+        try {
+            barcodeFormat = BarcodeFormat.valueOf(format);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Formato no valido. Usa, por ejemplo: QR_CODE, CODE_128, etc.");
+            return;
+        }
 
+        BitMatrix matrix = new MultiFormatWriter().encode(data, barcodeFormat, 500, 500);
         MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
 
-        System.out.println("QR code successfully created!");
+
+        System.out.println(barcodeFormat + " successfully created!");
     }
 }
-//"C:\\Users\\pablo.locay\\Desktop\\prueba.jpg";
