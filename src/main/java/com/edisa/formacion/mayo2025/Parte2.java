@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 public class Parte2 {
     public static void main(String[] args) throws WriterException, IOException {
         if (args.length == 0) {
-            System.out.println("Por favor, proporciona los tres argumentos correctamente.");
+            System.out.println("Por favor, proporciona un texto para el codigo QR.");
             return;
         }
 
