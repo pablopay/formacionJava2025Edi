@@ -1,4 +1,4 @@
-package com.edisa.formacion.mayo2025;
+package com.edisa.formacion.mayo2025EjersDia2;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
